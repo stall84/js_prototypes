@@ -1,19 +1,47 @@
+
+
 // Every object (except the root object) has a prototype (parent). 
 // To get the prototype of an object:
-Object.getPrototypeOf(obj); 
+let testObj = {};
+Object.getPrototypeOf(testObj); 
 
 // In Chrome, you can inspect "__proto__" property. But you should 
 // not use that in the code. 
 
+
+// Property Descriptors //
+let person = {
+    name: 'Mosh'
+};
+for (let key in person) {
+console.log(person);
+}
+
+let objectBase = Object.getPrototypeOf(person);
 // To get the attributes of a property:
-Object.getOwnPropertyDescriptor(obj, 'propertyName');
+Object.getOwnPropertyDescriptor(testObj, 'propertyName');
+//EX: 
+let personNew = {
+    name: 'Michael',
+    job: 'Badassery'
+}
+
+let descriptor = Object.getOwnPropertyDescriptor(objectBase, 'toString');
+console.log("Descriptor: " + descriptor);
+
+let testObj2 = {
+    name: 'Carter'
+}
 
 // To set the attributes for a property:
-Object.defineProperty(obj, 'propertyName', {
+Object.defineProperty(testObj2, 'propertyName', {
     configurable: false,    // cannot be deleted
     writable: false,
     enumerable: false
 });
+
+
+// In javascript, 
 
 // Constructors have a "prototype" property. It returns the object 
 // that will be used as the prototype for objects created by the constructor. 
