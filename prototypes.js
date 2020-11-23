@@ -59,11 +59,26 @@ Object.getPrototypeOf(x) === Object.getPrototypeOf(y); // returns true
 
 // When dealing with large number of objects, it's better to put their
 // methods on their prototype. This way, a single instance of the methods
-// will be in the memory. 
+// will be in the memory.
+function Circle(radius) {
+    this.radius = radius;
+    this.draw = function () {
+        console.log('Drawing Circle of Radius: ' + this.radius);
+    }
+    this.area = function () {
+        console.log('Drawing Circle of Area: ' + (Math.PI * (this.radius * this.radius)));
+    }
+}
+// Inheritance of Objects in Javascript. Your object inherits from the Base Object of it's type (like the Array base object)
+// which in turn inherits from the root javascript object
+
+let myArray = [10,200,9000];
+
+
 Circle.prototype.draw = function() {}
 
 // To get the own/instance properties:
-Object.keys(obj);
+//Object.keys(obj);
 
 // To get all the properties (own + prototype): 
-for (let key in obj) {}
+//for (let key in obj) {}
