@@ -62,21 +62,43 @@ Object.getPrototypeOf(x) === Object.getPrototypeOf(y); // returns true
 // will be in the memory.
 function Circle(radius) {
     this.radius = radius;
+    let defaultLocation = { x: 0, y: 0};    // Private member (defined with let
+
+    // this.getDefaultLocation = function () {     // Traditional way of Getting a member/prop/field
+    //     return defaultLocation;
+    // }
     this.draw = function () {
         console.log('Drawing Circle of Radius: ' + this.radius);
     }
     this.area = function () {
         console.log('Drawing Circle of Area: ' + (Math.PI * (this.radius * this.radius)));
     }
+    // Assigning Getter/Setters: Use 'this' to indicate the new object being created (circle in our case)
+    // Second argument is the name of the property in string form.
+    // The third argument is an Object defining the key-value pair. in our case a getter.
+    // So when we instantiate a new circle object, and call for circleObj.defaultlocation. The function we assigned below
+    // is returned
+    Object.defineProperty(this, 'defaultLocation', {
+        get: function() {
+            return defaultLocation;
+        }
+    })
 }
+
+
 // Inheritance of Objects in Javascript. Your object inherits from the Base Object of it's type (like the Array base object)
 // which in turn inherits from the root javascript object
 
 let myArray = [10,200,9000];
 
+// This is a prototype member.. It will be availalble outside of just an instance of the 'Constructor'
+Circle.prototype.protoDraw = function() {
+    console.log('Drawing Circle Proto: ')
+}
 
-Circle.prototype.draw = function() {}
-
+Circle.prototype.toString = function () {
+    console.log('Prototype toString method on Circle with radius: ' + this.radius);
+}
 // To get the own/instance properties:
 //Object.keys(obj);
 
