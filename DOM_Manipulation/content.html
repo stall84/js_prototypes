@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iframe Window</title>
+</head>
+<body>
+    <h1>STUFF IN THE IFRAME</h1>
+    <p id="frameP">Lorem Ipsum Dummy</p>
+    
+    <script>
+        // Inside our iFrame we are accessing the parent document (index.html). Assigning the DOM (document)
+        // To a variable, then 'reaching in' and logging out the value of the parent's heading attribute
+        // Or in our case grabbing elements from the top layer and appending it into the iframe
+        const parentDocument = window.parent.document;
+        const parentHeading = parentDocument.getElementById('heading');
+        const para = document.getElementById('frameP');
+        para.textContent = para.textContent + parentHeading.textContent;
+        
+    </script>
+</body>
+</html>
